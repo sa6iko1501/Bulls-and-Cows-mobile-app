@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.linear_layout);
     }
 
-    public  List<Integer> numbersGen() {
+    private  List<Integer> numbersGen() {
         Random rand = new Random();
         List<Integer> numList = new ArrayList<>();
         for(int i=0;i<4;i++){
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         guessAttempt();
     }
 
-    public void guessAttempt(){
+    private void guessAttempt(){
         attempts++;
         String input = editText.getText().toString();
         if(input.length()!=4){
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         }
         printGuessToTextView(linearLayout,digits);
     }
-    public void printGuessToTextView(LinearLayout linearLayout, ArrayList<Digit> digits){
+    private void printGuessToTextView(LinearLayout linearLayout, ArrayList<Digit> digits){
         LinearLayout rowLayout = createRow();
         int counter = 0;
         for(int i=0;i<4;i++){
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
     }
 
-    public LinearLayout createRow(){
+    private LinearLayout createRow(){
         LinearLayout rowLayout = new LinearLayout(this);
         rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -133,14 +133,14 @@ public class MainActivity extends AppCompatActivity {
         return rowLayout;
     }
 
-    public String printNumber(List<Integer> numbers){
+    private String printNumber(List<Integer> numbers){
         StringBuilder sb = new StringBuilder();
         for(int i=0;i<4;i++){
             sb.append(numbers.get(i));
         }
         return sb.toString();
     }
-    public TextView createNewEntry(Digit digit, int valueOfMatch){
+    private TextView createNewEntry(Digit digit, int valueOfMatch){
         TextView entry = new TextView(this);
         String number = String.valueOf(digit.getNumber());
         entry.setText(number);
